@@ -8,7 +8,8 @@ import numpy as np
 
 def train(epochs, dropout, axe):
     print('epochs='+ str(epochs) + ', dropout=' + str(dropout))
-    mnist = tf.keras.datasets.mnist
+    #mnist = tf.keras.datasets.mnist
+    mnist = tf.keras.datasets.fashion_mnist
 
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     x_train, x_test = x_train / 255.0, x_test / 255.0
@@ -45,11 +46,11 @@ def train(epochs, dropout, axe):
 
 fig=plt.figure(figsize=(2, 12))
 axes = fig.subplots(nrows=5, sharex=False)
-epochs = 18
+epochs = 20
 test_loss = []
-test_loss.append(train(epochs, 0.05, axes[0]))
+test_loss.append(train(epochs, 0.09, axes[0]))
 test_loss.append(train(epochs, 0.1, axes[1]))
-test_loss.append(train(epochs, 0.15, axes[2]))
-test_loss.append(train(epochs, 0.2, axes[3]))
+test_loss.append(train(epochs, 0.105, axes[2]))
+test_loss.append(train(epochs, 0.11, axes[3]))
 axes[4].plot(range(4), test_loss)
 plt.show()
