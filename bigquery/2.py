@@ -4,7 +4,7 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 
-def train(dataset, epochs, dropout):
+def train(dataset, optimizer, epochs, dropout):
     print('epochs='+ str(epochs) + ', dropout=' + str(dropout))
 
     mnist = tf.keras.datasets.mnist
@@ -50,4 +50,4 @@ def train(dataset, epochs, dropout):
     result = [train_loss, train_accuracy, test_loss, test_accuracy]
 
 epochs = 5
-train('mnist', epochs, 0.1, axes[0])
+train('mnist', 'adam', epochs, 0.1, axes[0])
