@@ -3,6 +3,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 def train(epochs, dropout, axe):
     print('epochs='+ str(epochs) + ', dropout=' + str(dropout))

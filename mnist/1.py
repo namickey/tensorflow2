@@ -1,8 +1,10 @@
 #encoding:utf-8
 from __future__ import absolute_import, division, print_function, unicode_literals
 import tensorflow as tf
+import pandas as pd
 
 mnist = tf.keras.datasets.mnist
+#mnist = tf.keras.datasets.fashion_mnist
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 x_train, x_test = x_train / 255.0, x_test / 255.0
