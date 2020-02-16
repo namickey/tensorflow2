@@ -14,7 +14,7 @@ def train(epochs, dropout, axe):
 
     model = tf.keras.models.Sequential([
       tf.keras.layers.Flatten(input_shape=(28, 28)),
-      tf.keras.layers.Dense(128, kernel_regularizer=tf.keras.regularizers.l2(0.001), activation='relu'),
+      tf.keras.layers.Dense(128, activation='relu'),
       tf.keras.layers.Dropout(dropout),
       tf.keras.layers.Dense(10, activation='softmax')
     ])

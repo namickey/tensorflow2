@@ -7,6 +7,15 @@
 1. 4.py keras cnn model with matplotlib on Colaboratory.  
 1. 5.py keras cnn model with matplotlib.  
 
+## keras optimizers
+SGD: old and basic.  
+Adagrad: L2ノルムベース  
+RMSprop: L2ノルムベース、AdaGradを改良  
+Adadelta: AdaGradやRMSPropを改良  
+Adam: RMSProp and Momentum.  
+Nadam: RMSProp and NAG(Nesterov's accelerated gradient).  
+Adamax: 無限ノルムに基づくAdamの拡張  
+
 ## bigquery
 pip install pandas_gbq
 
