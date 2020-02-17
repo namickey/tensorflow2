@@ -1,4 +1,7 @@
-# tensorflow2
+## training tensorflow2
+
+## Colaboratory
+https://colab.research.google.com/
 
 ## mnist
 1. 1.py keras simple model.  
@@ -17,7 +20,12 @@ Nadam: RMSProp and NAG(Nesterov's accelerated gradient).
 Adamax: 無限ノルムに基づくAdamの拡張  
 
 ## bigquery
-pip install pandas_gbq
+https://cloud.google.com/bigquery
 
-1. 0.py auth.  
-1. 1.py bigquery, pandas, read and write.  
+```
+pip install pandas_gbq
+```
+
+1. 0.py for auth on Colaboratory.  
+1. 1.py bigquery, pandas, read and write sample.  
+1. 2.py mnist, adam, pandas, bigquery on Colaboratory.  

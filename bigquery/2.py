@@ -1,10 +1,12 @@
 #encoding:utf-8
 from __future__ import absolute_import, division, print_function, unicode_literals
+%tensorflow_version 2.x
 import tensorflow as tf
 import numpy as np
 import pandas as pd
+import datetime
 
-def train(dataset, optimizer, epochs, dropout):
+def train(dataset, optimizer, decay, modelname, epochs, dropout):
     print('epochs='+ str(epochs) + ', dropout=' + str(dropout))
 
     mnist = tf.keras.datasets.mnist
@@ -20,19 +22,18 @@ def train(dataset, optimizer, epochs, dropout):
       tf.keras.layers.Dropout(dropout),
       tf.keras.layers.Dense(10, activation='softmax')
     ])
+    if modelname == 'cnn':
+        model = tf.keras.models.Sequential([
+        tf.keras.layers.Reshape((28, 28, 1), input_shape=(28, 28)),
+        tf.keras.layers.Conv2D(32, (5, 5), activation='relu'),
+        tf.keras.layers.MaxPooling2D(pool_size=(2,2)),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dropout(dropout),
+        tf.keras.layers.Dense(10, activation='softmax')
+        ])
 
-    model2 = tf.keras.models.Sequential([
-      tf.keras.layers.Reshape((28, 28, 1), input_shape=(28, 28)),
-      tf.keras.layers.Conv2D(32, (5, 5), activation='relu'),
-      tf.keras.layers.MaxPooling2D(pool_size=(2,2)),
-      tf.keras.layers.Flatten(),
-      tf.keras.layers.Dense(128, activation='relu'),
-      tf.keras.layers.Dropout(dropout),
-      tf.keras.layers.Dense(10, activation='softmax')
-    ])
-
-    #adam = tf.keras.optimizers.Adam(decay=1e-4)
-    adam = tf.keras.optimizers.Adam(decay=0)
+    adam = tf.keras.optimizers.Adam(decay=decay)
     model.compile(optimizer=adam,
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
@@ -48,6 +49,20 @@ def train(dataset, optimizer, epochs, dropout):
         test_loss += [result[0]]
         test_accuracy += [result[1]]
     result = [train_loss, train_accuracy, test_loss, test_accuracy]
+    df = pd.DataFrame({
+        'date' : datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))),
+        'dataset' : dataset,
+        'optimizer' : optimizer,
+        'decay' : decay,
+        'dropout' : dropout,
+        'modelname' : modelname,
+        'epochs' : epochs,
+        'testloss' : test_loss,
+        'testaccuracy' : test_accuracy,
+        'trainloss' : train_loss,
+        'trainaccuracy' : train_accuracy
+    })
+    df.to_gbq('ten2.hyper1', 'sc-line-227913', if_exists='replace') #
 
-epochs = 5
-train('mnist', 'adam', epochs, 0.1, axes[0])
+epochs = 3
+train('mnist', 'adam', 1e-4, 'basic', epochs, 0.1)
