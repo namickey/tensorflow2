@@ -1,34 +1,7 @@
 ## training tensorflow2
 
-## Colaboratory
-https://colab.research.google.com/
-
-## mnist
-1. 1.py keras simple model.  
-1. 2.py keras simple model with matplotlib.  
-1. 3.py keras simple model with matplotlib on Colaboratory.  
-1. 4.py keras cnn model with matplotlib on Colaboratory.  
-1. 5.py keras cnn model with matplotlib.  
-
-## keras optimizers
-SGD: old and basic.  
-Adagrad: L2ノルムベース  
-RMSprop: L2ノルムベース、AdaGradを改良  
-Adadelta: AdaGradやRMSPropを改良  
-Adam: RMSProp and Momentum.  
-Nadam: RMSProp and NAG(Nesterov's accelerated gradient).  
-Adamax: 無限ノルムに基づくAdamの拡張  
-
-## bigquery
-https://cloud.google.com/bigquery
-
-```
-pip install pandas_gbq
-```
-
-1. 0.py for auth on Colaboratory.  
-1. 1.py bigquery, pandas, read and write sample.  
-1. 2.py mnist, adam, pandas, bigquery on Colaboratory.  
+## mnist training outputs
+https://flas.mybluemix.net/
 
 ## data image.
 ```
@@ -54,3 +27,38 @@ date  dataset optimizer   decay  dropout modelname  epochs  testloss  testaccura
 18 2020-02-19 00:15:52.176872+00:00    mnist      adam  0.0001      0.1     basic       5  0.083093        0.9745   0.074229       0.977717
 19 2020-02-19 00:15:52.176872+00:00    mnist      adam  0.0001      0.1     basic       5  0.077300        0.9758   0.061136       0.981267
 ```
+
+## mnist
+1. 1.py keras simple model.  
+1. 2.py keras simple model with matplotlib.  
+1. 3.py keras simple model with matplotlib on Colaboratory.  
+1. 4.py keras cnn model with matplotlib on Colaboratory.  
+1. 5.py keras cnn model with matplotlib.  
+
+## keras optimizers
+SGD: old and basic.  
+Adagrad: L2ノルムベース  
+RMSprop: L2ノルムベース、AdaGradを改良  
+Adadelta: AdaGradやRMSPropを改良  
+Adam: RMSProp and Momentum.  
+Nadam: RMSProp and NAG(Nesterov's accelerated gradient).  
+Adamax: 無限ノルムに基づくAdamの拡張  
+
+## bigquery
+1. 0.py for auth on Colaboratory.  
+1. 1.py bigquery, pandas, read and write sample.  
+1. 2.py mnist, adam, pandas, bigquery on Colaboratory.  
+
+## pandas
+```
+pip install pandas_gbq
+```
+
+## Colaboratory
+https://colab.research.google.com/
+
+## IBM Cloud
+https://cloud.ibm.com/
+
+## bigquery
+https://cloud.google.com/bigquery

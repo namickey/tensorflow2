@@ -62,7 +62,11 @@ def train(dataset, optimizer, decay, modelname, epochs, dropout):
         'trainloss' : train_loss,
         'trainaccuracy' : train_accuracy
     })
-    df.to_gbq('ten2.hyper1', 'sc-line-227913', if_exists='replace') #
+    #df.to_gbq('ten2.hyper1', 'sc-line-227913', if_exists='replace')
+    df.to_gbq('ten2.hyper1', 'sc-line-227913', if_exists='append')
 
-epochs = 3
+epochs = 5
 train('mnist', 'adam', 1e-4, 'basic', epochs, 0.1)
+#train('mnist', 'adam', 1e-4, 'cnn', epochs, 0.1)
+train('fashion', 'adam', 1e-4, 'basic', epochs, 0.1)
+#train('fashion', 'adam', 1e-4, 'cnn', epochs, 0.1)
