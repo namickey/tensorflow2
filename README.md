@@ -49,8 +49,10 @@ Adamax: 無限ノルムに基づくAdamの拡張
 1. 1.py bigquery, pandas, read and write sample.  
 1. 2.py mnist, adam, pandas, bigquery on Colaboratory.  
 
-## pandas
+## install
 ```
+pip install pygal
+pip install ibmcloudenv
 pip install pandas_gbq
 ```
 
