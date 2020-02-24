@@ -15,8 +15,8 @@ https://flas.mybluemix.net/
 ![outline](img/outline.png)
 
 ## dataset
-https://en.wikipedia.org/wiki/MNIST_database
-https://github.com/zalandoresearch/fashion-mnist
+https://en.wikipedia.org/wiki/MNIST_database  
+https://github.com/zalandoresearch/fashion-mnist  
 
 ![mnist](img/mnist.png)
 ![fashion-mnist](img/fashion-mnist.png)
