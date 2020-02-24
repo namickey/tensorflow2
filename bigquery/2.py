@@ -6,8 +6,28 @@ import numpy as np
 import pandas as pd
 import datetime
 
+df = pd.DataFrame({})
+initdf=0
+
+def check(dataset, optimizer, decay, modelname, epochs, dropout):
+    sql = """
+    SELECT *
+    FROM `ten2.hyper1`
+    """
+    global initdf
+    global df
+    if not initdf:
+      initdf = 1
+      df = pd.read_gbq(sql, 'sc-line-227913', dialect='standard')
+    d=df[(df['dataset']==dataset)&(df['modelname']==modelname)&(df['decay']==decay)&(df['optimizer']==optimizer)&(df['dropout']==dropout)]
+    print(len(d))
+    return True
+
 def train(dataset, optimizer, decay, modelname, epochs, dropout):
     print('epochs='+ str(epochs) + ', dropout=' + str(dropout))
+    if check(dataset, optimizer, decay, modelname, epochs, dropout):
+      print('already.')
+      return
 
     mnist = tf.keras.datasets.mnist
     if dataset == 'fashion':
@@ -33,7 +53,7 @@ def train(dataset, optimizer, decay, modelname, epochs, dropout):
         tf.keras.layers.Dense(10, activation='softmax')
         ])
 
-    adam = tf.keras.optimizers.Adam(decay=decay)
+    adam = tf.keras.optimizers.Adam(learning_rate=0.001, decay=decay)
     model.compile(optimizer=adam,
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
@@ -66,7 +86,25 @@ def train(dataset, optimizer, decay, modelname, epochs, dropout):
     df.to_gbq('ten2.hyper1', 'sc-line-227913', if_exists='append')
 
 epochs = 5
-train('mnist', 'adam', 1e-4, 'basic', epochs, 0.1)
-#train('mnist', 'adam', 1e-4, 'cnn', epochs, 0.1)
-train('fashion', 'adam', 1e-4, 'basic', epochs, 0.1)
+#1
+train('mnist', 'adam', 1e-4, 'basic', epochs, 0.2)
+train('mnist', 'adam', 1e-4, 'cnn', epochs, 0.1)
+##train('fashion', 'adam', 1e-4, 'basic', epochs, 0.1)
 #train('fashion', 'adam', 1e-4, 'cnn', epochs, 0.1)
+#2
+#train('mnist', 'adam', 1e-3, 'basic', epochs, 0.1)
+#train('mnist', 'adam', 1e-2, 'basic', epochs, 0.1)
+#train('mnist', 'adam', 1e-1, 'basic', epochs, 0.1)
+#train('mnist', 'adam', 0.0, 'basic', epochs, 0.1)
+#3
+#train('fashion', 'adam', 1e-3, 'basic', epochs, 0.1)
+#train('fashion', 'adam', 1e-2, 'basic', epochs, 0.1)
+#train('fashion', 'adam', 1e-1, 'basic', epochs, 0.1)
+#train('fashion', 'adam', 0.0, 'basic', epochs, 0.1)
+#train('fashion', 'adam', 1e-3, 'cnn', epochs, 0.1)
+#train('fashion', 'adam', 1e-2, 'cnn', epochs, 0.1)
+#train('fashion', 'adam', 1e-1, 'cnn', epochs, 0.1)
+#train('fashion', 'adam', 0.0, 'cnn', epochs, 0.1)
+#4
+#train('mnist', 'adam', 1e-4, 'basic', epochs, 0.2)
+#train('fashion', 'adam', 1e-4, 'basic', epochs, 0.2)
