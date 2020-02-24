@@ -9,10 +9,17 @@ Comparing to Hyperparameters for MNIST dataset.
 https://flas.mybluemix.net/
 
 ## 画面イメージ
-![view sample](view_sample.png)
+![view sample](img/view_sample.png)
 
 ## 仕組み
-![outline](outline.png)
+![outline](img/outline.png)
+
+## dataset
+https://en.wikipedia.org/wiki/MNIST_database
+https://github.com/zalandoresearch/fashion-mnist
+
+![mnist](img/mnist.png)
+![fashion-mnist](img/fashion-mnist.png)
 
 ## 学習結果データ
 data image on BigQuery.
