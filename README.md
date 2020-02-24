@@ -47,19 +47,19 @@ pip install pandas_gbq
 ```
 
 ## code
+
 1. mnist/1.py keras simple model.  
 1. mnist/2.py keras simple model with matplotlib.  
 1. mnist/3.py keras simple model with matplotlib on Colaboratory.  
 1. mnist/4.py keras cnn model with matplotlib on Colaboratory.  
 1. mnist/5.py keras cnn model with matplotlib.  
-
 1. bigquery/0.py for auth on Colaboratory.  
 1. bigquery/1.py bigquery, pandas, read and write sample.  
 1. bigquery/2.py mnist, adam, pandas, bigquery on Colaboratory.  
 1. bigquery/3.py mnist, adam, pandas, bigquery on Colaboratory.  
 
 ## memo
-keras optimizers.
+keras optimizers.  
 ```
 SGD: old and basic.  
 Adagrad: L2ノルムベース  
